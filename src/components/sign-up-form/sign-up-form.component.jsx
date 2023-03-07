@@ -14,7 +14,6 @@ const defaultFormFields = {
     confirmPassword:''
 }
 
-
 const SignUpForm = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
     const { displayName, email, password, confirmPassword } = formFields;
@@ -31,7 +30,11 @@ const SignUpForm = () => {
             return;
         }
         try {
-            const { user } = await createAuthUserWithEmailAndPassword(email, password);
+            const { user } = await createAuthUserWithEmailAndPassword(
+                email, 
+                password
+                );
+
 
             await createUserDocumentFromAuth(user, { displayName });
             resetFormFields();
